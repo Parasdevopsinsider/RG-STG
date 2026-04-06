@@ -5,6 +5,12 @@ terraform {
       version = "4.60.0"
     }
   }
+  backend "azurerm" {
+    resource_group_name  = "rg_Infra"
+    storage_account_name = "stginfrabc"
+    container_name       = "infracontainer"
+    key                  = "infra.tfstate"
+  }
 }
 
 provider "azurerm" {

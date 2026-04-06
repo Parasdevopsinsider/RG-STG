@@ -22,7 +22,7 @@ resource "azurerm_storage_account" "sa1" {
 }
 
 resource "azurerm_storage_account" "sa2" {
-    depends_on = [ azurerm_resource_group.rg2 ]
+  depends_on               = [azurerm_resource_group.rg2]
   name                     = "stgateststorage"
   resource_group_name      = "rg_test"
   location                 = "westus"
@@ -31,12 +31,12 @@ resource "azurerm_storage_account" "sa2" {
 }
 
 resource "azurerm_storage_account" "sa3" {
-    depends_on = [azurerm_resource_group.rg3]
-    name                     = "stg1prodstorage"
-    resource_group_name      = "rg_prod"
-    location                 = "eastus"
-    account_tier            = "Standard"
-    account_replication_type = "GRS"
+  depends_on               = [azurerm_resource_group.rg3]
+  name                     = "stg1prodstorage"
+  resource_group_name      = "rg_prod"
+  location                 = "eastus"
+  account_tier             = "Standard"
+  account_replication_type = "GRS"
 }
 
 resource "azurerm_storage_container" "container1" {
@@ -46,7 +46,7 @@ resource "azurerm_storage_container" "container1" {
 }
 
 resource "azurerm_storage_container" "container2" {
-    depends_on = [ azurerm_storage_account.sa2 ]
+  depends_on            = [azurerm_storage_account.sa2]
   name                  = "testcontainer"
   storage_account_name  = "stgateststorage"
   container_access_type = "blob"
